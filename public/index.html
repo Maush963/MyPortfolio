@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mauricio Salas - Portfolio</title>
+    <link rel="icon" href="../assets/Logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for dark mode with gradient background */
+        body {
+            background: linear-gradient(to bottom, #1a202c, #2d3748, #4a5568, #718096, #a0aec0);
+            color: #cbd5e0;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Navbar styles */
+        nav {
+            background-color: transparent;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        nav a {
+            color: #cbd5e0;
+            text-decoration: none;
+            padding: 1rem;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Pseudo-element to create top border */
+        nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+
+        /* Adjust for smaller screens */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav a {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Section styles */
+        section {
+            padding: 6rem 2rem;
+            min-height: calc(100vh - 6rem); /* Adjust based on navbar height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        section p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #cbd5e0;
+        }
+
+        /* Home Section specific styles */
+        .home-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .home-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .home-text h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .home-text p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #cbd5e0;
+        }
+
+        .home-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .home-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10%;
+            box-shadow: 7px -8px 7px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* My Experience Section specific styles */
+        .experience-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .experience-item {
+            background: #2d3748;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            flex: 1 1 calc(33% - 2rem); /* Adjust this value to set the desired width */
+            max-width: calc(33% - 2rem);
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-item img {
+            max-width: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item p {
+            font-size: 1rem;
+            color: #cbd5e0;
+        }
+
+        .experience-logo {
+            width: 40px; 
+            height: 40px; 
+            object-fit: contain; 
+        }
+
+        /* Contact Section specific styles */
+        .social-icon {
+        transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+        transform: scale(1.1); /* Aumenta el tamaño del logo en un 10% */
+        }
+
+
+        /* Adjust for smaller screens */
+        @media (max-width: 768px) {
+            .experience-item {
+                flex: 1 1 calc(100% - 2rem);
+                max-width: calc(100% - 2rem);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container mx-auto">
+        <!-- Navbar -->
+        <nav>
+            <div>
+                <h1 class="text-3xl font-extralight text-white">My Journey</h1>
+            </div>
+            <div>
+                <a href="#home">Home</a>
+                <a href="#about">About Me</a>
+                <a href="#experience">My Experience</a>
+                <a href="#contact">Contact</a>
+                <a href="https://helix-flier-b01.notion.site/Mauricio-Salas-Hern-ndez-Software-CV-5c148d1cc14b40b09c5a1c2c7b5b5c4d" target="_blank" class="border border-white text-white hover:bg-white hover:text-black px-4 py-2 rounded-full ml-4 border-opacity-40">Software CV</a>
+            </div>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home">
+            <div class="max-w-7xl mx-auto home-content">
+                <div class="home-text">
+                    <h2>Mauricio Salas</h2>
+                    <p>A Mexican Software developer student that has gained a strange passion for sales and digital marketing.</p>
+                    <div class="mt-4"> <!-- Añade un margen superior para separar los botones de la descripción -->
+                      <a href="/path/to/action" target="_blank" class="border border-white text-white hover:bg-white hover:text-black px-4 py-2 rounded-full border-opacity-40">Book a Call</a>
+                      <a href="#about" class="border border-white text-white hover:bg-white hover:text-black px-4 py-2 rounded-full ml-4 border-opacity-40">About me</a>
+                    </div>
+                </div>
+                <div class="home-image">
+                    <img src="../assets/maush.png" alt="Mauricio Salas">
+                </div>
+            </div>
+        </section>
+
+       <!-- About Me Section -->
+        <section id="about">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between py-12">
+                <div class="w-full md:w-1/2 mb-4 md:mb-0" style="height: 800px; overflow: hidden; border-radius: 3%;">
+                    <img src="../assets/Energiainfinita.jpeg" alt="Mauricio Salas" class="rounded-lg shadow-lg drop-shadow-lg" style="transform: translateY(-5%);">
+                </div>
+                <div class="w-full md:w-1/2 md:pl-12">
+                    <h2 class="text-4xl font-bold text-white mb-4">About Me</h2>
+                <p class="text-xl text-white mb-4">
+                    I’m a 21-year-old Mexican student who enjoys spending quality time with family and friends, embracing nature and learning. With deep-seated love for calisthenics and rock climbing, along with an unwavering dedication to entrepreneurship.
+                </p>
+                <p class="text-xl text-white mb-4">
+                    I am currently focused on merging my software development career with my passion for sales and marketing, with the aim of helping others scale their businesses and, perhaps one day, start my own venture.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- My Experience Section -->
+        <section id="experience">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-bold text-white mb-4">My Experience</h2>
+                <p class="text-gray-100 mb-4"><i>Click on any project for more information.</i></p>
+                <!-- Grid layout -->
+                <div class="experience-grid">
+                    <!-- Example grid items (replace with your own) -->
+                    <div class="experience-item" data-url="https://miscompetenciastec21.tec.mx/elumen/portfolio/R2wezVSQYNAcwBp87">
+                        <img src="../assets/infinite.png" alt="Infinite Logo" class="experience-logo">
+                        <h3 class="text-xl font-semibold mb-2">Infinite Energy</h3>
+                        <p class="text-sm">A multi clean energy generator prototype where I mastered SQL for data management, foundational CSS, HTML, and collaborative skills.</p>
+                    </div>
+                    <div class="experience-item" data-url="https://github.com/A01705840/CCC_LeadSales">
+                        <img src="../assets/statistics.png" alt="Project Logo" class="experience-logo">
+                        <h3 class="text-xl font-semibold mb-2">Charleads</h3>
+                        <p class="text-sm">Analytics website for an international CRM, <b>Leadsales</b>, where I honed my HTML, CSS, SQL, and project management abilities, and learned JS.</p>
+                    </div>
+                    <div class="experience-item" data-url="https://drive.google.com/drive/u/2/folders/1Gc3du78KUgbdHuCMzUeqjBpt88rV1fk3">
+                        <img src="../assets/brain.png" alt="Project Logo" class="experience-logo">
+                        <h3 class="text-xl font-semibold mb-2">Cognitive Deployment</h3>
+                        <p class="text-sm">A motivational/self-development Spanish YouTube channel showcasing my video editing, marketing, and competitor analysis skills.</p>
+                    </div>
+                    <div class="experience-item" data-url="https://drive.google.com/drive/u/4/folders/10mOoHZSYBfRRWFcTUjNPD7SCCpXo-K66">
+                        <img src="../assets/flash.png" alt="Project Logo" class="experience-logo">
+                        <h3 class="text-xl font-semibold mb-2">Sales Video Script</h3>
+                        <p class="text-sm">A video sales script for a Skool community, demonstrating expertise in sales psychology, problem-solving, and competitive analysis.</p>
+                    </div>
+                    <div class="experience-item" data-url="https://drive.google.com/drive/u/4/folders/1y5NvQNExHki141Eea_o6eowPS9obR_9t">
+                        <img src="../assets/letter.png" alt="Project Logo" class="experience-logo">
+                        <h3 class="text-xl font-semibold mb-2">Email Sequence</h3>
+                        <p class="text-sm">An email sequence where I showcased audience understanding, brand voice, copywriting techniques, and fundamental psychological insights.</p>
+                    </div>
+                    <div class="experience-item" data-url="https://miscompetenciastec21.tec.mx/elumen/portfolio/dbQZ07sK0b5HmdLpx">
+                        <img src="../assets/curve.png" alt="Project Logo" class="experience-logo">
+                        <h3 class="text-xl font-semibold mb-2">Graduation requirements app design</h3>
+                        <p class="text-sm">Improved my project management skills by iterating and refining software requirements..</p>
+                    </div>
+                </div>
+            </div>   
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-bold text-white mb-4">Contact Me</h2>
+                <!-- Social icons -->
+                <div class="flex justify-center mt-4">
+                    <a href="https://www.instagram.com/maush.insights/" target="_blank" class="social-icon text-gray-400 hover:text-white mx-4">
+                        <img src="../assets/icons8-instagram-50.png" alt="Instagram" class="h-10 w-10">
+                    </a>
+                    <a href="https://github.com/Maush963" target="_blank" class="social-icon text-gray-400 hover:text-white mx-4">
+                        <img src="../assets/icons8-github-48.png" alt="Github" class="h-10 w-10">
+                    </a>
+                    <a href="mailto:maush.solutions@gmail.com" target="_blank" class="social-icon text-gray-400 hover:text-white mx-4">
+                        <img src="../assets/icons8-email-100.png" alt="Email" class="h-10 w-10">
+                    </a>
+                </div>
+                <!-- Button to Calendly -->
+                <!-- Button to Calendly -->
+            <a href="https://calendly.com/yourcalendlylink" target="_blank" class="border border-white text-white hover:bg-white hover:text-black px-6 py-3 rounded-full mt-8 inline-block border-opacity-40">Schedule Meeting</a>
+            </div>
+        </section>
+    </div>
+
+
+    <script>
+        // Add JavaScript to handle the click event and open the URL in a new tab
+        document.querySelectorAll('.experience-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const url = item.getAttribute('data-url');
+                window.open(url, '_blank');
+            });
+        });
+    </script>
+</body>
+
+
+
+</html>
